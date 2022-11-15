@@ -19,7 +19,6 @@ const FormComponent = ({ info, setInfo, handleSubmit }) => {
     e.preventDefault();
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
-    console.log(info);
   };
   return (
     <Grid
