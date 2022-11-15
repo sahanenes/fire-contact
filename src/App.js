@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Contacts from "./components/contacts/Contacts";
 import FormComponent from "./components/form/FormComponent";
+import { AddUser } from "./utils/functions";
 
 const initialValues = {
   username: "",
@@ -11,9 +12,18 @@ const initialValues = {
 
 function App() {
   const [info, setInfo] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    AddUser(info);
+  };
   return (
     <div className="App">
-      <FormComponent info={info} setInfo={setInfo} />
+      <FormComponent
+        info={info}
+        setInfo={setInfo}
+        handleSubmit={handleSubmit}
+      />
       <Contacts />
     </div>
   );
