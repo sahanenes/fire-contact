@@ -28,7 +28,33 @@ const Contacts = () => {
           </TableHead>
 
           <TableBody>
-            <TableRow></TableRow>
+            {isLoading ? (
+              <TableRow
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell colSpan={5} align="center">
+                  Loading
+                </TableCell>
+              </TableRow>
+            ) : contactList?.length === 0 ? (
+              <TableRow
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell colSpan={5} align="center">
+                  No results found
+                </TableCell>
+              </TableRow>
+            ) : (
+              contactList?.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell>{item.username}</TableCell>
+                  <TableCell>{item.phoneNumber}</TableCell>
+                  <TableCell>{item.gender}</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              ))
+            )}
           </TableBody>
         </Table>
       </TableContainer>
