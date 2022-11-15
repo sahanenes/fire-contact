@@ -14,7 +14,11 @@ import {
 import { AccountCircle } from "@mui/icons-material";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 
-const FormComponent = () => {
+const FormComponent = ({ info, setInfo }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInfo({ ...info, [name]: value });
+  };
   return (
     <Grid
       textAlign="center"
@@ -30,7 +34,7 @@ const FormComponent = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <code>{"<Clarusway/> "}</code>
+            <code>{"<Contacts/> "}</code>
           </a>
         </div>
         <span className="design header">design</span>
@@ -44,7 +48,7 @@ const FormComponent = () => {
               variant="outlined"
               name="username"
               value={null}
-              onChange={null}
+              onChange={handleChange}
               placeholder="Name"
               InputProps={{
                 startAdornment: (
@@ -58,7 +62,7 @@ const FormComponent = () => {
               variant="outlined"
               name="phoneNumber"
               value={null}
-              onChange={null}
+              onChange={handleChange}
               placeholder="Phone Number"
               InputProps={{
                 startAdornment: (
@@ -75,7 +79,7 @@ const FormComponent = () => {
                 name="gender"
                 variant="outlined"
                 value={null}
-                onChange={null}
+                onChange={handleChange}
               >
                 <MenuItem value="Female">Female</MenuItem>
                 <MenuItem value="Male">Male</MenuItem>
